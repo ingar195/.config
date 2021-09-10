@@ -8,6 +8,11 @@ exec autorandr --change
 exec numlockx on
 
 
+workspace 1 output DP-3-2
+#workspace 2 output HDMI2
+workspace 3 output eDP-1
+
+
 bindsym $mod+s "pkill slack"
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod1
@@ -37,12 +42,6 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 #bindsym XF86AudioNext exec playerctl next
 #bindsym XF86AudioPrev exec playerctl previous
 
-#Backlight
-#bindsym XF86MonBrightnessUp exec xbacklight -inc 20
- # increase screen brightness
-#bindsym XF86MonBrightnessDown exec xbacklight -dec 20
- # decrease screen brightness
-
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 new_window pixel 1
 new_float normal
@@ -63,7 +62,7 @@ font xft:URWGothic-Book 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -95,7 +94,7 @@ bindsym $mod+e exec nautilus
 bindsym $mod+w exec google-chrome-stable
 bindsym $mod+F3 exec spotify --force-device-scale-factor=2
 
-bindsym Print exec --no-startup-id i3-scrot
+bindsym $mod+Shift+s exec scrot -s ~/Pictures/Screenshot/%F_%T.png -e 'xclip -selection clipboard -target image/png -i $f'
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 
 # focus_follows_mouse no
@@ -152,7 +151,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # toggle sticky
-bindsym $mod+Shift+s sticky toggle
+#bindsym $mod+Shift+s sticky toggle
 
 # focus the parent container
 bindsym $mod+a focus parent

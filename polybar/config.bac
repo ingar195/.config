@@ -1,7 +1,7 @@
 [bar/top]
 enable-ipc = true
 bottom = false
-monitor =  ${env:MONITOR:}
+monitor = eDP-1
 width = 100%
 height = 44
 dpi = 100
@@ -20,13 +20,16 @@ module-margin-right = 3
 
 separator = |
 
+;font-0 = NotoSans-Regular:size=19;-1
 
-;font-1 = Unifont:size=10
-;font-2 = FontAwesome5Free:style=Regular:size=10;4
-;font-3 = FontAwesome5Brands:style=Regular:size=10;4
+;font-0 = Misc\ Termsynu:size=19:antialias=false;3
+font-0 = NotoSans-Regular:size=10;2
+font-1 = Material\ Icons:size=10;0
+font-2 = Misc\ Termsynu:size=10;-2
+font-3 = FontAwesome:size=9;0
 
 modules-left = mpd i3
-modules-right = cpu memory temperature filesystem backlight volume wireless-network consumation  battery date
+modules-right = cpu memory temperature filesystem xkeyboard volume wireless-network consumation  battery date
 
 wm-restack = i3
 
@@ -67,6 +70,13 @@ padding-right = 4
 module-margin-left = 0
 module-margin-right = 6
 
+;font-0 = NotoSans-Regular:size=10;0
+font-0 = NotoSans-Regular:size=9;0
+font-1 = Material\ Icons:size=11;2
+font-2 = xos4\ Terminus:size=14;0
+font-3 = Siji:pixelsize=11;1
+font-4 = Siji:pixelsize=11;1
+;font-4 = FontAwesome:size=11;0
 
 modules-left = i3
 modules-right =   filesystem volume backlight   battery date
@@ -79,9 +89,9 @@ format = <label>
 card =  intel_backlight
 
 label = %percentage%%
-ramp-0 =  
-ramp-1 =  
-ramp-2 = 
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
 
 bar-width = 10
 bar-indicator = |
@@ -98,13 +108,13 @@ bar-empty-foreground = #44
 type = custom/script
 
 exec = $HOME/.config/polybar/power.sh
-interval = 1 
+interval = 2
 
 [module/battery]
 type = internal/battery
 full-at = 98
 
-format-charging =  <animation-charging> <label-charging>
+format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
 format-full = <ramp-capacity> <label-full>
 
@@ -112,20 +122,18 @@ label-charging = %percentage%% %time%h
 label-discharging = %percentage%% %time%h
 ramp-capacity-0 = 
 ramp-capacity-0-foreground = #f53c3c
-ramp-capacity-1 =  
+ramp-capacity-1 = 
 ramp-capacity-1-foreground = #ffa900
-ramp-capacity-2 =  
-ramp-capacity-3 =  
-ramp-capacity-4 = 
-ramp-capacity-5 = 
-ramp-capacity-6 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
 
 bar-capacity-width = 10
 bar-capacity-format = %{+u}%{+o}%fill%%empty%%{-u}%{-o}
-bar-capacity-fill = asd
+bar-capacity-fill = █
 bar-capacity-fill-foreground = #ddffffff
 bar-capacity-fill-font = 3
-bar-capacity-empty = 
+bar-capacity-empty = █
 bar-capacity-empty-font = 3
 bar-capacity-empty-foreground = #44ffffff
 
@@ -134,7 +142,7 @@ animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
-animation-charging-framerate = 1000
+animation-charging-framerate = 750
 
 [module/bspwm]
 type = internal/bspwm
@@ -175,22 +183,22 @@ label-empty-foreground = #55
 label-empty-font = 4
 label-empty-padding = 4
 
-label-monocle = q 
+label-monocle = 
 label-monocle-underline = ${module/bspwm.label-active-underline}
 label-monocle-background = #33ffffff
 label-monocle-padding = 2
 
-label-locked = q
+label-locked = 
 label-locked-foreground = #bd2c40
 label-locked-underline = ${module/bspwm.label-monocle-underline}
 label-locked-padding = ${module/bspwm.label-monocle-padding}
 
-label-sticky = q
+label-sticky = 
 label-sticky-foreground = #fba922
 label-sticky-underline = ${module/bspwm.label-monocle-underline}
 label-sticky-padding = ${module/bspwm.label-monocle-padding}
 
-label-private = q
+label-private = 
 label-private-foreground = #bd2c40
 label-private-underline = ${module/bspwm.label-monocle-underline}
 label-private-padding = ${module/bspwm.label-monocle-padding}
@@ -208,7 +216,7 @@ label-empty-padding = 1
 
 [module/cpu]
 type = internal/cpu
-interval = 2
+interval = 0.5
 format = <label> <ramp-coreload>
 label = CPU
 ramp-coreload-0 = ▁
@@ -235,18 +243,18 @@ ramp-coreload-6-foreground = #ff5555
 ramp-coreload-7 = █
 ramp-coreload-7-font = 2
 ramp-coreload-7-foreground = #ff5555
+
 [module/date]
 type = internal/date
-date =  📅  %Y-%m-%d%%{F-}  %H:%M:%S%%{F-}
-;date =  📅  %%{F#99}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M:%S%%{F-}
-date-alt = %A, %d %B %Y  %H:%M%%{F#666}:%S%%{F-}
+date =    %%{F#99}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M:%S%%{F-}
+date-alt = %%{F#fff}%A, %d %B %Y  %%{F#fff}%H:%M%%{F#666}:%%{F#fba922}%S%%{F-}
 
 [module/memory]
 type = internal/memory
 format = <label> <bar-used>
 label = RAM
 
-bar-used-width = 15
+bar-used-width = 30
 bar-used-foreground-0 = #aaff77
 bar-used-foreground-1 = #aaff77
 bar-used-foreground-2 = #fba922
@@ -254,86 +262,87 @@ bar-used-foreground-3 = #ff5555
 bar-used-indicator = |
 bar-used-indicator-font = 6
 bar-used-indicator-foreground = #ff
-bar-used-fill = -
+bar-used-fill = ─
 bar-used-fill-font = 6
-bar-used-empty = -
+bar-used-empty = ─
 bar-used-empty-font = 6
 bar-used-empty-foreground = #444444
 
-#[module/mpd]
-#type = internal/mpd
-#format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time>  <label-song>
+[module/mpd]
+type = internal/mpd
+format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time>  <label-song>
 
-#icon-play = 
-#icon-pause = 
-#icon-stop = 
-#icon-prev = 
-#icon-next = 
-#icon-random = 
-#icon-repeat = 
+icon-play = 
+icon-pause = 
+icon-stop = 
+icon-prev = 
+icon-next = 
+icon-random = 
+icon-repeat = 
 
-#toggle-on-foreground =
-#toggle-off-foreground = #55
+toggle-on-foreground =
+toggle-off-foreground = #55
 
-#bar-progress-width = 45
-#bar-progress-format = %{A4:mpdseek+2: A5:mpdseek-2:}%fill%%indicator%%empty%%{A A}
-#bar-progress-indicator = |
-#bar-progress-indicator-foreground = #ff
-#bar-progress-indicator-font = 3
-#bar-progress-fill = ─
-#bar-progress-fill-foreground = #bb
-#bar-progress-fill-font = 3
-#bar-progress-empty = ─
-#bar-progress-empty-font = 3
-#bar-progress-empty-foreground = #44
+bar-progress-width = 45
+bar-progress-format = %{A4:mpdseek+2: A5:mpdseek-2:}%fill%%indicator%%empty%%{A A}
+bar-progress-indicator = |
+bar-progress-indicator-foreground = #ff
+bar-progress-indicator-font = 3
+bar-progress-fill = ─
+bar-progress-fill-foreground = #bb
+bar-progress-fill-font = 3
+bar-progress-empty = ─
+bar-progress-empty-font = 3
+bar-progress-empty-foreground = #44
 
 [module/wireless-network]
 type = internal/network
-interface = wlp59s0
+interface = wlp5s0
 interval = 1.0
-ping-interval = 30
+ping-interval = 10
 
-format-connected = <label-connected>
+format-connected = <ramp-signal> <label-connected>
 label-connected = %local_ip%    %downspeed%    %upspeed%
-label-disconnected =   not connected
+label-disconnected =    not connected
 label-disconnected-foreground = #66
 
-ramp-signal-0 = signal_wifi_0_bar
-ramp-signal-1 = signal_wifi_1_bar
-ramp-signal-2 = signal_wifi_2_bar
-ramp-signal-3 = signal_wifi_3_bar
-ramp-signal-4 = wifi
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
 
-animation-packetloss-0 = pakcetloss
+animation-packetloss-0 = 
 animation-packetloss-0-foreground = #ffa64c
-animation-packetloss-1 = packetloss
+animation-packetloss-1 = 
 animation-packetloss-1-foreground = ${bar/top.foreground}
 animation-packetloss-framerate = 500
 
 
 [module/volume]
-type = internal/alsa
+type = internal/volume
 ;speaker-mixer = Speaker
 ;headphone-mixer = Headphone
-;headphone-id = 9
+:headphone-id = 9
 
 format-volume = <ramp-volume> <label-volume>
-label-muted =   muted
+label-muted =   muted
 label-muted-foreground = #66
 
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
 
 
 [module/filesystem]
 type = internal/fs
-interval = 1000
+interval = 25
 
 mount-0 = /
 
-label-mounted =  %percentage_used%%
-label-unmounted =  %mountpoint% not mounted
+label-mounted =  %mountpoint%: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = #66
 
 
@@ -342,8 +351,8 @@ type = custom/menu
 
 format-padding = 5
 
-label-open =  
-label-close = 
+label-open = 
+label-close = 
 label-separator = |
 
 menu-0-0 = Terminate WM
@@ -372,7 +381,7 @@ menu-2-1-exec = menu_open-0
 
 [module/clock]
 type = internal/date
-interval = 500
+interval = 2
 date = %%{F#999}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
 
 
@@ -387,15 +396,13 @@ format = <ramp> <label>
 format-warn = <ramp> <label-warn>
 ;format-warn-underline = ${self.format-underline}
 
-label = %temperature-c%
-label-warn = HOT! %temperature-c%
+label = %temperature%
+label-warn = HOT! %temperature%
 label-warn-foreground = #f00
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-3 = 
-ramp-4 =   
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
 ramp-foreground = #66
 
 
@@ -484,9 +491,9 @@ label-separator-foreground = #ffb52a
 [module/spotify]
 type = custom/script
 interval = 5
-format-prefix = "   "
+format-prefix = "  "
 format = <label>
-exec = /home/user/.config/polybar/spotify.py
+exec = /home/nicomazz97/.config/polybar/spotify.py
 
 
 format-underline = #1db954
