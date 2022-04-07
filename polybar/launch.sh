@@ -1,5 +1,5 @@
 #!/bin/sh
-sleep 5
+sleep 1
 # Terminate already running bar instances
 killall -q polybar
 

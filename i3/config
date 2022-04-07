@@ -8,17 +8,16 @@ exec autorandr --change
 exec numlockx on
 
 
-workspace 1 output DP-3-2
+workspace 1 output DP-2-2
 #workspace 2 output HDMI2
 workspace 3 output eDP-1
 
 
 bindsym $mod+s "pkill slack"
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
-set $mod Mod1
+set $mod Mod4
 
-bindsym --release Print exec scrot -s ~/screenshots/%F_%T.png -e 'xclip -selection clipboard -target image/png -i $f'
-
+bindsym --release Print exec scrot -s ~/Pictures/Screenshot/%F_%T.png -e 'xclip -selection clipboard -target image/png -i $f'
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
 
@@ -77,16 +76,16 @@ bindsym $mod+z exec --no-startup-id morc_menu
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
 
-exec --no-startup-id volumeicon
+#exec --no-startup-id volumeicon
 #bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
-exec --no-startup-id pulseaudio
-bindsym $mod+Ctrl+m exec pavucontrol
+#exec --no-startup-id pulseaudio
+#bindsym $mod+Ctrl+m exec pavucontrol
 
 ################################################################################################
 
 # Screen brightness controls
- bindsym XF86MonBrightnessUp exec "xbacklight -inc 5; notify-send 'brightness up'"
- bindsym XF86MonBrightnessDown exec "xbacklight -dec 5; notify-send 'brightness down'"
+ bindsym XF86MonBrightnessUp exec "xbacklight -inc 2"
+ bindsym XF86MonBrightnessDown exec "xbacklight -dec 2"
 
 # Start Applications
 bindsym $mod+e exec nautilus
