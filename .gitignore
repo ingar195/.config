@@ -35,3 +35,7 @@ menus/
 tuxclocker.conf
 i3/config.save
 polybar/config.
+vscode-sqltools/
+Code/
+procps/
+yay/
