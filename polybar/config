@@ -116,7 +116,7 @@ type = internal/cpu
 interval = 0.3
 format = <label> <ramp-coreload>
 label = CPU
-ramp-coreload-0 = ▁
+ramp-coreload-0 = _
 ramp-coreload-0-font = 2
 ramp-coreload-0-foreground = #aaff77
 ramp-coreload-1 = ▂
@@ -205,16 +205,6 @@ ramp-volume-0 = 
 ramp-volume-1 = 墳
 ramp-volume-2 = 
 
-
-[module/filesystem]
-type = internal/fs
-interval = 1000
-
-mount-0 = /
-
-label-mounted =  %percentage_used%%
-label-unmounted =  %mountpoint% not mounted
-label-unmounted-foreground = #66
 
 [module/clock]
 type = internal/date

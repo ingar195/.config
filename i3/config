@@ -14,13 +14,15 @@ workspace 3 output eDP-1
 
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
-set $mod Mod1
+set $mod Mod4
 
 
 # Variety
 exec variety
 bindsym $mod+Shift+n exec variety -n
 
+# Code
+bindsym $mod+c exec code
 
 # Work
 bindsym $mod+Shift+o exec google-chrome-stable, exec slack
